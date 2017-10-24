@@ -1,0 +1,6 @@
+{% extends "layout.html.twig" %}
+
+{% block content %}
+    <h1>{{ title|default("hello")|capitalize }}</h1>
+    <p>{{ message|capitalize }}</p>
+{% endblock %}

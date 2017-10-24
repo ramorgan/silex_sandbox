@@ -33,3 +33,31 @@ $app->error(
         return new Response($app['twig']->resolveTemplate($templates)->render(array('code' => $code)), $code);
     }
 );
+
+// define controllers for a blog
+$blog = $app['controllers_factory'];
+$blog->get(
+    '/',
+    function () use ($app) {
+        return $app['twig']->render(
+            'page.html.twig',
+            ['title' => 'blog home page', 'message' => 'welcome to the blog homepage']
+        );
+    }
+);
+// ...
+
+// define controllers for a forum
+$forum = $app['controllers_factory'];
+$forum->get(
+    '/',
+    function () use ($app) {
+        return $app['twig']->render(
+            'page.html.twig',
+            ['title' => 'form home page', 'message' => 'welcome to the form homepage']
+        );
+    }
+);
+
+$app->mount('/blog', $blog);
+$app->mount('/forum', $forum);
