@@ -35,6 +35,7 @@ $app->error(
 );
 
 // define controllers for a blog
+/*
 $blog = $app['controllers_factory'];
 $blog->get(
     '/',
@@ -44,7 +45,8 @@ $blog->get(
             ['title' => 'blog home page', 'message' => 'welcome to the blog homepage']
         );
     }
-);
+);*/
+$app->mount("/blogs", new \Sandbox\Controller\Provider\Blogs() );
 // ...
 
 // define controllers for a forum
@@ -59,5 +61,4 @@ $forum->get(
     }
 );
 
-$app->mount('/blog', $blog);
 $app->mount('/forum', $forum);
